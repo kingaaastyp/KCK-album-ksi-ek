@@ -1,3 +1,4 @@
+
 package controller;
 
 import model.Book;
@@ -140,3 +141,92 @@ public class BookController {
         }
     }
 }
+        /*import com.googlecode.lanterna.SGR;
+import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.gui2.*;
+import com.googlecode.lanterna.gui2.dialogs.MessageDialog;
+import com.googlecode.lanterna.gui2.dialogs.TextInputDialog;
+import com.googlecode.lanterna.screen.Screen;
+import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+import model.Book;
+import java.io.IOException;
+import java.util.List;
+
+public class BookView {
+    private final Screen screen;
+    private final MultiWindowTextGUI gui;
+
+    public BookView() throws IOException {
+        this.screen = new DefaultTerminalFactory().createScreen();
+        this.screen.startScreen();
+        this.gui = new MultiWindowTextGUI(screen);
+    }
+
+    public void displayWelcomeScreen() {
+        MessageDialog.showMessageDialog(gui, "Witamy", "Witamy w aplikacji zarządzania książkami!", MessageDialogButton.OK);
+    }
+
+    public void displayMenu() {
+        // Użycie MessageDialog do wyświetlenia menu
+        String menu = "1. Wyświetl wszystkie książki\n" +
+                "2. Wyszukaj książkę po tytule\n" +
+                "3. Wyszukaj książkę po autorze\n" +
+                "4. Dodaj książkę\n" +
+                "5. Usuń książkę\n" +
+                "6. Sortuj książki\n" +
+                "7. Filtruj książki po autorze\n" +
+                "8. Wyświetl szczegóły książki\n" +
+                "9. Wyjdź";
+        MessageDialog.showMessageDialog(gui, "Menu", menu, MessageDialogButton.OK);
+    }
+
+    public int getMenuSelection() throws NumberFormatException {
+        String input = promptForInput("Wybierz opcję: ");
+        return Integer.parseInt(input);
+    }
+
+    public void displayBooks(List<Book> books) {
+        StringBuilder bookList = new StringBuilder();
+        for (int i = 0; i < books.size(); i++) {
+            Book book = books.get(i);
+            bookList.append(i + 1).append(". Tytuł: ").append(book.getTitle())
+                    .append(", Autor: ").append(book.getAuthor()).append("\n");
+        }
+        MessageDialog.showMessageDialog(gui, "Lista książek", bookList.toString(), MessageDialogButton.OK);
+    }
+
+    public String promptForInput(String prompt) {
+        TextInputDialog inputDialog = new TextInputDialog(gui, prompt, "", "");
+        inputDialog.showDialog(gui);
+        return inputDialog.getText();
+    }
+
+    public Book promptForBookDetails() {
+        String title = promptForInput("Podaj tytuł: ");
+        String author = promptForInput("Podaj autora: ");
+        return new Book(title, author);
+    }
+
+    public Book promptForBookRemoval(List<Book> books) {
+        displayBooks(books);
+        int index = Integer.parseInt(promptForInput("Wybierz numer książki do usunięcia: ")) - 1;
+        if (index >= 0 && index < books.size()) {
+            return books.get(index);
+        } else {
+            return null;
+        }
+    }
+
+    public void displayBookDetails(Book book) {
+        String details = "Tytuł: " + book.getTitle() + "\nAutor: " + book.getAuthor();
+        MessageDialog.showMessageDialog(gui, "Szczegóły książki", details, MessageDialogButton.OK);
+    }
+
+    public void exitApplication() {
+        try {
+            screen.stopScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}*/
