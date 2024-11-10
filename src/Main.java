@@ -1,14 +1,19 @@
 import controller.BookController;
 import model.BookRepository;
 import view.BookView;
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
     public static void main(String[] args) {
+        // Tworzymy instancję BookRepository
         BookRepository bookRepository = new BookRepository("books.txt");
-        BookView bookView = new BookView();
+
+        // Tworzymy instancję BookView bez kontrolera
+        BookView bookView = new BookView(null);
+
+        // Tworzymy instancję BookController, przekazując BookRepository i BookView
         BookController bookController = new BookController(bookRepository, bookView);
 
-        bookController.start();
+        // Ustawiamy kontroler w BookView, aby była widoczna relacja z BookController
+        bookView.setController(bookController);
     }
 }

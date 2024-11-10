@@ -67,6 +67,7 @@ public class BookRepository {
         saveBooksToFile();
     }
 
+
     public void sortBooksByTitle() {
         books.sort(Comparator.comparing(Book::getTitle));
         System.out.println("Książki zostały posortowane po tytule.");
@@ -83,7 +84,7 @@ public class BookRepository {
                 .collect(Collectors.toList());
     }
 
-    private void saveBooksToFile() {
+    public void saveBooksToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             for (Book book : books) {
                 writer.write("Tytuł: " + book.getTitle() +
